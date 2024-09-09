@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { Event, nip26, validateEvent, verifySignature } from 'nostr-tools';
 import { validateSchema } from '~/lib/utils';
 import { prisma } from '~/server/db';
-import type { Identity } from '@prisma/client';
+import { Identity } from '@prisma/client';
 import { federationConfig } from '~/lib/federation';
 
 export async function POST(request: Request) {
@@ -24,6 +24,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    let newIdentity: Identity | null;
     // Start transaction
     await prisma.$transaction(async (tx) => {
       const newPubkey: string | null = (event.tags.find((t) => t[0] === 'p') ?? [null, null])[1] ?? null;
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
       const oldIdentity: Identity | null = await tx.identity.findUnique({ where: { pubkey: oldPubkey } });
       if (null === oldIdentity) throw new Error('Existing identity not found');
 
-      const newIdentity: Identity | null = await tx.identity.update({
+      newIdentity = await tx.identity.update({
         where: {
           pubkey: oldPubkey,
         },
@@ -43,7 +44,11 @@ export async function POST(request: Request) {
           pubkey: newPubkey,
         },
       });
+
+      return;
     });
+
+    if (!newIdentity) throw new Error('Identity not found');
     return NextResponse.json({ name: newIdentity.name, pubkey: newIdentity.pubkey }, { status: 200 });
   } catch (error: unknown) {
     const message = (error as Error).message;

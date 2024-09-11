@@ -2,8 +2,8 @@ import React from 'react';
 import '~/styles/globals.css';
 
 export const metadata = {
-  title: 'LaWallet.ar',
-  description: 'Gestioná pagos, identidades y comunidad fácilmente',
+  title: 'LNBot.io',
+  description: 'Una cuenta de discord, una billetera de lightning. Gracias al stack de LaWallet.io',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

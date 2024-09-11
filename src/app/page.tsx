@@ -12,10 +12,14 @@ export default function Home() {
 
         <main className="space-y-12">
           <section className="text-center max-w-2xl mx-auto">
-            <h1 className="text-3xl font-semibold mb-6">Todas tus herramientas en un solo lugar</h1>
+            <h1 className="text-3xl font-semibold mb-6">Bienvenido a LNBot.io</h1>
             <p className="mb-8 text-muted-foreground">
-              Gestioná pagos, identidades y comunidad fácilmente con LaWallet.app. Con la ayuda de Bitcoin, Lightning
-              Network y Nostr en una plataforma diseñada para simplificarlo todo.
+              Este bot genera una billetera de ligthning network para cada usuario de tu servidor de discord. Esto
+              permite enviar, recibir, retirar y reclamar satoshis (la unidad de medida más pequeña de bitcoin) desde
+              una simple cuenta de discord.
+            </p>
+            <p className="mb-8 text-muted-foreground">
+              Todo esto es posible gracias al stack de <a href="https://lawallet.io">LaWallet</a>
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button
@@ -24,14 +28,16 @@ export default function Home() {
                 variant="outline"
                 className="bg-background text-foreground hover:bg-accent hover:text-accent-foreground text-lg px-8 py-6"
               >
-                <Link href="https://app.lawallet.ar/login">Ingresá a tu billetera</Link>
+                <Link href="https://app.lnbot.io/login">Ingresá a tu billetera</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6"
               >
-                <Link href="https://app.lawallet.ar/signup">Creá una ahora</Link>
+                <Link href="https://discord.com/oauth2/authorize?client_id=1283094721358598256">
+                  Agregá el bot a tu servidor de Discord
+                </Link>
               </Button>
             </div>
           </section>

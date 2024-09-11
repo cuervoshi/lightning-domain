@@ -14,7 +14,7 @@ export default function Home() {
           <section className="text-center max-w-2xl mx-auto">
             <h1 className="text-3xl font-semibold mb-6">Bienvenido a LNBot.io</h1>
             <p className="mb-8 text-muted-foreground">
-              Este bot genera una billetera de ligthning network para cada usuario de tu servidor de discord. Esto
+              Este bot genera una billetera de lightning network para cada usuario de tu servidor de discord. Esto
               permite enviar, recibir, retirar y reclamar satoshis (la unidad de medida más pequeña de bitcoin) desde
               una simple cuenta de discord.
             </p>
